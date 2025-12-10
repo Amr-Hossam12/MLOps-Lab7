@@ -1,0 +1,131 @@
+PS D:\GitHub Repos\MLOps-Lab7> & C:/Users/Amr/AppData/Local/Microsoft/WindowsApps/python3.12.exe "d:/GitHub Repos/MLOps-Lab7/agent.py"
+--- 🔍 Data Analyst Swarm ---
+[System]: Checking connection to Ollama model 'qwen3:1.7b'...
+[System]: Connection successful.
+
+Enter a topic for analysis (e.g., 'Video Game Sales 2024'): Video Game Sales 2023
+--- 🔄 Generating Synthetic Data for: Video Game Sales 2023 ---
+
+[Data Loader]: Generated dataset sample.
+
+[Data Loader]: Generated dataset sample.
+--- 💡 Generating Insights ---
+
+[Insight Generator]:
+**Key Business Insights Based on the Dataset:**
+
+1. **Platform Dominance in 2023:**
+   PC emerges as the top-performing platform with the highest sales (550 million) in 2023, followed by Xbox (500 million) and PS5 (450 million). This highlights PC's sustained dominance in the gaming market, driven by its high sales volume and consistent growth over time.
+
+2. **Sales Growth Over Time:**
+   Sales for all platforms and genres show a clear upward trend. PC's sales increased from 100 million in 2019 to 550 million in 2023, while PS5 and Xbox also saw rising sales (150 → 450 million and 200 → 500 million, respectively). This indicates a growing market share and increasing demand for games across platforms.
+
+3. **Genre Performance and Trends:**
+   The **Action** genre leads in 2023 for PC (550 million), reflecting its popularity in the gaming sector. Meanwhile, **Sports** dominates Xbox's 2023 sales (500 million), suggesting a strong performance in the sports-themed gaming category. These trends underscore the importance of genre-specific strategies and platform-specific marketing.
+
+**Conclusion:**
+The data underscores PC's leadership in 2023, consistent sales growth across platforms, and the rising popularity of the Action genre. These insights inform strategic decisions around platform allocation, genre targeting, and market expansion.
+
+[Insight Generator]:
+**Key Business Insights Based on the Dataset:**
+
+1. **Platform Dominance in 2023:**
+   PC emerges as the top-performing platform with the highest sales (550 million) in 2023, followed by Xbox (500 million) and PS5 (450 million). This highlights PC's sustained dominance in the gaming market, driven by its high sales volume and consistent growth over time.
+
+2. **Sales Growth Over Time:**
+   Sales for all platforms and genres show a clear upward trend. PC's sales increased from 100 million in 2019 to 550 million in 2023, while PS5 and Xbox also saw rising sales (150 → 450 million and 200 → 500 million, respectively). This indicates a growing market share and increasing demand for games across platforms.
+
+3. **Genre Performance and Trends:**
+   The **Action** genre leads in 2023 for PC (550 million), reflecting its popularity in the gaming sector. Meanwhile, **Sports** dominates Xbox's 2023 sales (500 million), suggesting a strong performance in the sports-themed gaming category. These trends underscore the importance of genre-specific strategies and platform-specific marketing.
+
+**Conclusion:**
+The data underscores PC's leadership in 2023, consistent sales growth across platforms, and the rising popularity of the Action genre. These insights inform strategic decisions around platform allocation, genre targeting, and market expansion.
+
+---- ⏸️  Paused before node: ('ChartCreator',) ----
+Review the insights above. Proceed to generate Python Chart Code?
+(yes/no): yes
+
+[Insight Generator]:
+**Key Business Insights Based on the Dataset:**
+
+1. **Platform Dominance in 2023:**
+   PC emerges as the top-performing platform with the highest sales (550 million) in 2023, followed by Xbox (500 million) and PS5 (450 million). This highlights PC's sustained dominance in the gaming market, driven by its high sales volume and consistent growth over time.
+
+2. **Sales Growth Over Time:**
+   Sales for all platforms and genres show a clear upward trend. PC's sales increased from 100 million in 2019 to 550 million in 2023, while PS5 and Xbox also saw rising sales (150 → 450 million and 200 → 500 million, respectively). This indicates a growing market share and increasing demand for games across platforms.
+
+3. **Genre Performance and Trends:**
+   The **Action** genre leads in 2023 for PC (550 million), reflecting its popularity in the gaming sector. Meanwhile, **Sports** dominates Xbox's 2023 sales (500 million), suggesting a strong performance in the sports-themed gaming category. These trends underscore the importance of genre-specific strategies and platform-specific marketing.
+
+**Conclusion:**
+The data underscores PC's leadership in 2023, consistent sales growth across platforms, and the rising popularity of the Action genre. These insights inform strategic decisions around platform allocation, genre targeting, and market expansion.
+--- 📊 Creating Chart Code ---
+[Chart Creator]: Visualization code generated.
+[Chart Creator]: Visualization code generated.
+
+[Final Chart Code]:
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+from io import StringIO
+
+data = """
+Platform,Sales (Millions),Release Year,Genre
+PC,100,2019,Action
+PS5,150,2020,RPG
+Xbox,200,2021,Sports
+PC,250,2022,Action
+PS5,300,2023,RPG
+Xbox,350,2023,Sports
+PC,400,2023,Action
+PS5,450,2023,RPG
+Xbox,500,2023,Sports
+PC,550,2023,Action
+"""
+
+df = pd.read_csv(StringIO(data), sep=',')
+
+# Aggregate sales by platform
+agg_sales = df.groupby('Platform')['Sales (Millions)'].sum().reset_index()
+
+# Create bar chart
+plt.figure(figsize=(10, 6))
+plt.bar(agg_sales['Platform'], agg_sales['Sales (Millions)'], color='skyblue')
+
+plt.title('Total Sales by Platform')
+plt.xlabel('Platform')
+plt.ylabel('Sales (Millions)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('chart_output.png')
+plt.close()
+```
+
+[System]: Visualization code saved to 'visualize.py'
+
+--- COPY CODE BELOW FOR MERMAID DIAGRAM ---
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+        __start__([<p>__start__</p>]):::first
+        Supervisor(Supervisor)
+        DataLoader(DataLoader)
+        InsightGenerator(InsightGenerator)
+        ChartCreator(ChartCreator<hr/><small><em>__interrupt = before</em></small>)
+        __end__([<p>__end__</p>]):::last
+        ChartCreator --> Supervisor;
+        DataLoader --> Supervisor;
+        InsightGenerator --> Supervisor;
+        Supervisor -.-> ChartCreator;
+        Supervisor -.-> DataLoader;
+        Supervisor -.-> InsightGenerator;
+        Supervisor -. &nbsp;FINISH&nbsp; .-> __end__;
+        __start__ --> Supervisor;
+        classDef default fill:#f2f0ff,line-height:1.2
+        classDef first fill-opacity:0
+        classDef last fill:#bfb6fc
+
+-------------------------------------------
